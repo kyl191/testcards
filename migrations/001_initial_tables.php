@@ -7,15 +7,14 @@ class Migration_Initial_tables extends Migration {
         // Create the tests table first.
         // Note that we're referencing bf_users - if another prefix is used, this will fail
         $this->db->query('
-CREATE TABLE `bf_tests` (
- `id` int(11) NOT NULL AUTO_INCREMENT,
- `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
- `description` text NOT NULL,
- `owner` bigint(20) unsigned NOT NULL,
- PRIMARY KEY (`id`),
- KEY `owner` (`owner`),
- CONSTRAINT `tests_ibfk_1` FOREIGN KEY (`owner`) REFERENCES `bf_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;');
+CREATE TABLE `bf_tests` (  `id` int(11) NOT NULL AUTO_INCREMENT,  
+`name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,  
+`slug` varchar(255) NOT NULL,  
+`description` text NOT NULL,  
+`owner` bigint(20) unsigned NOT NULL,  
+PRIMARY KEY (`id`),  
+UNIQUE KEY `slug` (`slug`),  
+KEY `owner` (`owner`),  CONSTRAINT `tests_ibfk_1` FOREIGN KEY (`owner`) REFERENCES `bf_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB DEFAULT CHARSET=utf8;');
         
         // Next, do the questions since that depends on the tests
         $this->db->query('
