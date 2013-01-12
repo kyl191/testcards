@@ -20,7 +20,7 @@
             </tr>
         </tfoot>
         <tbody>
-        <?php if (isset($posts) && is_array($posts)) :?>
+        <?php if (isset($posts) && is_array($posts) && !empty($posts)) :?>
             <?php foreach ($posts as $post) : ?>
             <tr>
                 <td><input type="checkbox" name="checked[]" value="<?php echo $post['id'] ?>" /></td>

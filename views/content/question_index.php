@@ -19,7 +19,7 @@
             </tr>
         </tfoot>
         <tbody>
-        <?php if (isset($questions) && is_array($questions)) :?>
+        <?php if (isset($questions) && is_array($questions) && !empty($questions)) :?>
             <?php foreach ($questions as $question) : ?>
             <tr>
                 <td><input type="checkbox" name="checked[]" value="<?php echo $question['id'] ?>" /></td>
