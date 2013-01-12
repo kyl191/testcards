@@ -1,0 +1,52 @@
+html, body {
+	font-family: Helvetica, Palatino Linotype, Book Antiqua, Palatino, serif;
+	font-size: 18px;
+	text-align: justify;
+	background-color: #ffffff;
+	position: relative;
+}
+.wf-active h1, .wf-active h2, .wf-active h3, .wf-active ul#navbar > li, .wf-active #footer, .wf-active #admin, .wf-active #fsizer, .wf-active #top-link {
+	font-family: 'Doppio One', Helvetica, Palatino Linotype, Book Antiqua, Palatino, serif;
+}
+.wf-inactive h1, .wf-inactive h2, .wf-inactive h3, .wf-inactive ul#navbar > li, .wf-inactive #footer, .wf-inactive #admin, .wf-inactive #fsizer, .wf-inactive #top-link {
+	font-family: Helvetica, Palatino Linotype, Book Antiqua, Palatino, serif;
+}
+.wf-loading h1, .wf-loading h2, .wf-loading h3, .wf-loading ul#navbar > li, .wf-loading #footer, .wf-loading #admin, .wf-loading #fsizer, .wf-loading #top-link {
+	font-family: Helvetica, Palatino Linotype, Book Antiqua, Palatino, serif;
+}
+a, .link>a, #link {
+	text-decoration: none;
+	color: #2781DB;
+}
+a:hover {
+	color: #ED4F00;
+}
+a:visited {
+	color: #800080;
+}
+h1 {
+	font-size: 2em;
+	color: #33cccc;
+	margin: 0.5em 0 0.25em 0;
+	border-bottom: 1px solid #000000;
+}
+h2 {
+	color: #33cccc;
+	font-size:1.75em;
+	margin-top:0.25em;
+	margin-bottom:0.25em;
+}
+h3 {
+	font-size:1.25em;
+	margin: 0;
+	padding: 0;
+}
+div#footer {
+	font-size:0.875em;
+}
+li:last-child {
+	margin-bottom: 0.25em;
+}
+td > p, li > p{
+	font-size:1em;
+}

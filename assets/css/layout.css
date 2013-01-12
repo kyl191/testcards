@@ -1,0 +1,144 @@
+//* Pull stuff down from http://jquerymobile.com/themeroller/ */
+* {
+	margin: 0;
+	padding: 0;
+}
+div.width {
+	max-width: 960px;
+	margin: 0 auto;
+}
+div.content {
+	margin: 0 auto;
+	padding: 0 0;
+}
+div.content p, div.content ul, div.content ol, div.block, div#footer {
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+#reason {
+	padding-top:-0.25em;
+	padding-bottom: 0em;
+}
+div.img {
+	padding: 1em;
+	overflow:hidden;
+	text-align:center;
+	font-style:italic;
+	font-size: 12px;
+}
+input, label {
+    display: none;
+}
+label {
+    text-align: left;
+    overflow: hidden;
+    display: block;
+    padding-bottom: 1em;
+}
+#mainright input{
+    display:block;
+    float:left;
+}
+
+.success { 
+    background:rgba(0,255,0,0.2);
+}
+.fail { 
+    background:rgba(255,0,0,0.2); 
+}
+
+
+ul, ol {
+	padding-left: 2em;
+}
+hr {
+	margin: 1em;
+	min-width: 100px;
+	max-width: 960px;
+	border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+}
+div.clearfloat {
+	clear:both;
+}
+div.clearrightfloat {
+	clear:right;
+}
+div.floatleft {
+	float:left;
+}
+div.floatright{
+	float:right;
+}
+
+div.center {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+div.video {
+	margin-bottom: 1em;
+}
+
+div#footer {
+	margin-bottom: 2.5em;
+}
+
+div.left {
+	float:left;
+	width: 25%
+}
+div.right {
+	float:left;
+	width: 75%;
+}
+
+div.contentleft {
+	float:left;
+	width: 64%;
+}
+div.contentright {
+	float:right;
+	width:33%;
+	padding: 0;
+	margin:0;
+	overflow: hidden;
+}
+
+div#mainleft{
+	padding-top: 1em;
+	float:left;
+	width: 47%;
+}
+div#mainright{
+	padding-top: 1em;
+	float: right;
+	width: 47%;
+}
+
+a img {
+	border: none; 
+}
+div.ad {
+	border: 1px dashed #FF0000;
+}
+
+@media only screen and (orientation: portrait) {
+    div#mainleft{
+        padding-top: 1em;
+        padding-bottom: 2em;
+        float:left;
+        width: 100%;
+    }
+    div#mainright{
+        padding-top: 1em;
+        padding-bottom: 2em;
+        float: left;
+        width: 100%;
+    }
+}
+

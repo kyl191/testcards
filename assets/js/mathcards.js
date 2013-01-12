@@ -1,0 +1,80 @@
+function validate(attempt){
+    if (answer == attempt){
+        correct++;
+    }
+    $('input[type=radio]').prop('disabled', true);
+    if (correct >= 10){
+        $("#endbutton").show();
+        $("#nextbutton").hide();
+    } else {
+        $('#nextbutton').show();
+    }
+}
+
+function clearAnswers(){
+    $('input[type=radio]').prop('disabled', false);
+    $('input[type=radio]:checked').prop('checked', false);
+}
+
+function nextQuestion(){
+    clearAnswers();
+    nextQn = data.pop();
+    $("#question").fadeIn('fast').html(nextQn.question);
+    $("#label1").fadeIn('fast').html(nextQn.label1);
+    $("#label2").fadeIn('fast').html(nextQn.label2);
+    $("#label3").fadeIn('fast').html(nextQn.label3);
+    reason = nextQn.reason;
+    answer = nextQn.answer;
+    // http://docs.mathjax.org/en/latest/typeset.html
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub, "mainleft"]);
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub, "mainright"]);
+}
+
+function showSummary(){
+    $("#restartbutton").before("<h2 id=\"message\">Congrats!</h2> <p>You finished 10 questions, and got " + correct + " of them correct!</p><p>If you want to be able to test yourself against all of the questions at one go, please purchase the full version of this application. Thanks!</p><p>Alternatively, tap the restart button below to try another 10 randomly selected questions.</p>").fadeIn("fast");
+    $("#mainleft").fadeOut("fast");
+    $("#mainright").fadeOut("fast");
+    $("#restartbutton").show();
+}
+
+function init(){
+    var data = fisherYates(getData());
+    
+    // Fade everything back in
+    $("#mainright").fadeIn("fast");
+    $("#mainleft").fadeIn("fast");
+    $('label').fadeIn();
+    $('input[type=radio]').fadeIn();
+    
+    // Clean up, assume we're restarting
+    $("#message").remove();
+    $("#main > p").remove();
+    correct = 0;
+    numQuestions = data.length;
+
+    // Hide all the buttons
+    $('#nextbutton').hide();
+    $('#restartbutton').hide();
+    $('#endbutton').hide();
+
+    // Get the next question
+    nextQuestion();
+}
+
+function fisherYates ( myArray ) {
+    // from http://sedition.com/perl/javascript-fy.html
+    var i = myArray.length;
+    if ( i == 0 ) return false;
+    while ( --i ) {
+        var j = Math.floor( Math.random() * ( i + 1 ) );
+        var tempi = myArray[i];
+        var tempj = myArray[j];
+        myArray[i] = tempj;
+        myArray[j] = tempi;
+    }
+    return myArray;
+}
+
+var answer, reason, correct, numQuestions;
+correct = 0;
+numQuestions = 0;

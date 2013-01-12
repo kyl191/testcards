@@ -9,6 +9,10 @@ class Cards extends Front_Controller {
         $this->load->model('question_model');
         $this->load->model('answer_model');
         
+        Assets::add_module_css("cards", "layout.css");
+        Assets::add_module_js("cards", "jquery.ninjaui.min.js");
+        Assets::add_module_js("cards", "mathcards.js");
+        
     }
     
     //--------------------------------------------------------------------
