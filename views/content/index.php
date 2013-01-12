@@ -34,6 +34,7 @@
                 </td>
                 <td>
                     <?php echo $post['numQuestions']; ?>
+                </td>
             </tr>
             <?php endforeach; ?>
         <?php else: ?>
