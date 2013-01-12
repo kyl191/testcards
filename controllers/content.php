@@ -257,13 +257,18 @@
                 if ($this->save_answer('update', $id))
                 {
                     Template::set_message('The answer was successfully updated.', 'success');
-                    redirect(SITE_AREA .'/content/list_answers');
+                    redirect(SITE_AREA .'/content/cards/list_answers');
                 }
             }
             
             Template::set('answer', $this->answer_model->find($id));
-            Template::set('tests', $this->test_model->find_all_by('owner', $this->auth->user_id()));
-
+            $question_list = $this->db->query('SELECT bf_questions.id, bf_questions.question FROM bf_questions JOIN bf_tests ON bf_questions.parent_test = bf_tests.id WHERE bf_tests.owner = '.$this->auth->user_id())->result_array();
+            $questions = array('0' => "Select a question");
+            foreach($question_list as $question){
+                $questions[$question['id']] = $question['question'];
+            }
+            Template::set('questions', $questions);
+            
             Template::set('toolbar_title', 'Edit Answer');
             Template::set_view('content/answer_form');
             Template::render();
