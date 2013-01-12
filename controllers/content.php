@@ -137,7 +137,7 @@
             }
             else    // Update
             {
-                $return = $this->test_model->update($id, $data);
+                $return = $this->question_model->update($id, $data);
             }
             // Recount the number of questions assigned to a test & update the count in the database
             
