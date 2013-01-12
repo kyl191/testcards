@@ -139,14 +139,14 @@
             return $return;
         }
         
-        public function edit_questions($id=null) 
+        public function edit_question($id=null) 
         {
             if ($this->input->post('submit'))
             {
                 if ($this->save_post('update', $id))
                 {
                     Template::set_message('The question was successfully updated.', 'success');
-                    redirect(SITE_AREA .'/content/cards');
+                    redirect(SITE_AREA .'/content/list_questions');
                 }
             }
             
@@ -156,6 +156,15 @@
 
             Template::set('toolbar_title', 'Edit Question');
             Template::set_view('content/question_form');
+            Template::render();
+        }
+        
+        public function list_questions() 
+        {
+            Template::set('questions', $this->question_model->order_by('id', 'asc')->find_all());
+            //$this->db->query('SELECT bf_tests.title, bf_tests.id, bf_tests.numQuestions, bf_users.username FROM bf_tests JOIN bf_users on bf_tests.owner = bf_users.id')->result_array();
+    
+            Template::set_view('content/question_index');
             Template::render();
         }
     }
