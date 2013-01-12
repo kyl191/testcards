@@ -1,4 +1,4 @@
-
+<script>var test_id = <?php echo $id; ?>;</script>
 <div class="width center" id="main">
   <h1>Linear Algebra &mdash; Vector Spaces</h1>
   <input type="button" id="restartbutton" onclick="init();" value="Restart?">

@@ -16,7 +16,7 @@ function clearAnswers(){
     $('input[type=radio]:checked').prop('checked', false);
 }
 
-function nextQuestion(){
+function nextQuestion(data){
     clearAnswers();
     nextQn = data.pop();
     $("#question").fadeIn('fast').html(nextQn.question);
@@ -36,29 +36,33 @@ function showSummary(){
     $("#mainright").fadeOut("fast");
     $("#restartbutton").show();
 }
-
+var questions;
 function init(){
-    var data = fisherYates(getData());
+    getData(function(data){
     
-    // Fade everything back in
-    $("#mainright").fadeIn("fast");
-    $("#mainleft").fadeIn("fast");
-    $('label').fadeIn();
-    $('input[type=radio]').fadeIn();
+        data = fisherYates(data);
+        // Fade everything back in
+        $("#mainright").fadeIn("fast");
+        $("#mainleft").fadeIn("fast");
+        $('label').fadeIn();
+        $('input[type=radio]').fadeIn();
+        
+        // Clean up, assume we're restarting
+        $("#message").remove();
+        $("#main > p").remove();
+        correct = 0;
+        numQuestions = data.length;
+
+        // Hide all the buttons
+        $('#nextbutton').hide();
+        $('#restartbutton').hide();
+        $('#endbutton').hide();
+
+        // Get the next question
+        nextQuestion(data);
+        questions = data;
+        });
     
-    // Clean up, assume we're restarting
-    $("#message").remove();
-    $("#main > p").remove();
-    correct = 0;
-    numQuestions = data.length;
-
-    // Hide all the buttons
-    $('#nextbutton').hide();
-    $('#restartbutton').hide();
-    $('#endbutton').hide();
-
-    // Get the next question
-    nextQuestion();
 }
 
 function fisherYates ( myArray ) {
@@ -73,6 +77,27 @@ function fisherYates ( myArray ) {
         myArray[j] = tempi;
     }
     return myArray;
+}
+
+
+function getData(callback){
+    // jQuery ajax request to /cards/generate_set/id
+
+    var data = $.ajax({
+        dataType: "json",
+        url: "/cards/generate_set/"+test_id,
+        data: data,
+        success: function(data){
+            console.log("Retrived id " + test_id + " successfully");
+            console.log(data);
+            var items = [];
+            $.each(data, function(key, val) {
+                items.push(val);
+            });
+            console.log(items.length);
+            console.log(items);
+            callback(items);}
+        });
 }
 
 var answer, reason, correct, numQuestions;
