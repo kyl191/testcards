@@ -21,8 +21,8 @@ class Cards extends Front_Controller {
     {
         $this->load->helper('typography');
     
-        Template::set('posts', $this->test_model->order_by('id', 'asc')->find_all());
-    
+        $data = $this->db->query('SELECT bf_tests.title, bf_tests.id, bf_tests.description, bf_users.username FROM bf_tests JOIN bf_users on bf_tests.owner = bf_users.id ORDER BY bf_tests.id DESC')->result_array();
+        Template::set('posts', $data);
         Template::render();
     }
     
