@@ -74,8 +74,8 @@
             {
                 if ($this->save_post('update', $id))
                 {
-                    Template::set_message('You post was successfully saved.', 'success');
-                    redirect(SITE_AREA .'/content/blog');
+                    Template::set_message('The quiz was successfully updated.', 'success');
+                    redirect(SITE_AREA .'/content/cards');
                 }
             }
             
