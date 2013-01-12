@@ -27,7 +27,7 @@
         <label for="body">Description</label>
         <div class="controls">
             <?php if (form_error('body')) echo '<span class="help-inline">'. form_error('body') .'</span>'; ?>
-            <textarea name="body" class="input-xxlarge" rows="15"><?php echo set_value('body', isset($post) ? $post->body : '') ?></textarea>
+            <input type="text" name="description" class="input-xxlarge" value="<?php echo set_value('title', isset($post) ? $post->description : ''); ?>" />
         </div>
     </div>
     
