@@ -111,8 +111,7 @@
             $this->form_validation->set_rules('answer1', 'Answer 1', 'required');
             $this->form_validation->set_rules('answer2', 'Answer 2', 'required');
             $this->form_validation->set_rules('answer3', 'Answer 3', 'required');
-            
-            
+            $this->form_validation->set_rules('answer', 'Correct answer', 'required');
             
             if ($this->form_validation->run() === false)
             {
