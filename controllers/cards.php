@@ -37,6 +37,7 @@ class Cards extends Front_Controller {
         });", "inline");
         Template::set('js', Assets::module_js());
         Template::set('id', $id);
+        Template::set('title', $this->db->query("select bf_tests.title, bf_tests.description from bf_tests where bf_tests.id =".$id)->row());
         Template::render();
     }
     
