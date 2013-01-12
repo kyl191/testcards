@@ -16,6 +16,7 @@
         <label for="answer<?php echo $i; ?>">Answer <?php echo $i; ?></label>
         <div class="controls">
             <?php if (form_error('answer'.$i)) echo '<span class="help-inline">'. form_error('answer'.$i) .'</span>'; ?>
+            <?php echo form_radio('answer', $i, FALSE); ?>
             <textarea name="answer<?php echo $i; ?>" class="input-xxlarge" rows="15"><?php echo set_value('answer'.$i, isset($answers) ? $answers[$i-1]['answer'] : '') ?></textarea>
         </div>
     </div>
