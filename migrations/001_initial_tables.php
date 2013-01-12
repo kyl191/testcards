@@ -12,7 +12,6 @@ CREATE TABLE `bf_tests` (
  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
  `description` text NOT NULL,
  `owner` bigint(20) unsigned NOT NULL,
- `image` varchar(255) NOT NULL,
  PRIMARY KEY (`id`),
  KEY `owner` (`owner`),
  CONSTRAINT `tests_ibfk_1` FOREIGN KEY (`owner`) REFERENCES `bf_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
