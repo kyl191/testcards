@@ -58,10 +58,12 @@
             
             if ($type == 'insert')
             {
+                $data['numQuestions'] = 0;
                 $return = $this->test_model->insert($data);
             }
             else    // Update
             {
+                $data['numQuestions'] = $this->question_model->where('parent_test', $id);
                 $return = $this->test_model->update($id, $data);
             }
             
