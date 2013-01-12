@@ -279,7 +279,7 @@
             $questions = $this->db->query('SELECT bf_answers.id, bf_answers.answer, bf_answers.modified, bf_questions.question FROM bf_answers JOIN bf_questions on bf_answers.parent_question = bf_questions.id')->result_array();
             Template::set('answers', $answers);
             
-            Template::set_view('content/question_index');
+            Template::set_view('content/answer_index');
             Template::render();
         }
 
