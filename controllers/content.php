@@ -50,7 +50,7 @@
             // Compile our post data to make sure nothing
             // else gets through.
             $data = array(
-                'name' => $this->input->post('title'),
+                'title' => $this->input->post('title'),
                 'slug'  => $this->input->post('slug'),
                 'description'  => $this->input->post('description'),
                 'owner' => $this->auth->user_id()
