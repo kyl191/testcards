@@ -115,10 +115,6 @@
         private function save_question($type='insert', $id=null) 
         {
             $this->form_validation->set_rules('question', 'Question Text', 'required');
-            $this->form_validation->set_rules('answer1', 'Answer 1', 'required');
-            $this->form_validation->set_rules('answer2', 'Answer 2', 'required');
-            $this->form_validation->set_rules('answer3', 'Answer 3', 'required');
-            $this->form_validation->set_rules('answer', 'Correct answer', 'required');
             $this->form_validation->set_rules('test', 'Selected test', 'check_owner');
             
             if ($this->form_validation->run() === false)
@@ -149,12 +145,6 @@
             $this->db->set("numQuestions", $num_questions);
             $this->db->where("id", $test)->update("bf_tests");
             
-            // loop over the answers and add them, singling out the correct one to set the correct variable
-            for($i = 1; $i <= 3; $i++){
-                $data = array(
-                    'answer' => 
-            }
-            
             return $return;
         }
         
@@ -180,7 +170,6 @@
             }
             
             Template::set('question', $this->question_model->find($id));
-            Template::set('answers', $this->answer_model->find_all_by('parent_question', $id));
             Template::set('tests', $this->test_model->find_all_by('owner', $this->auth->user_id()));
 
             Template::set('toolbar_title', 'Edit Question');
