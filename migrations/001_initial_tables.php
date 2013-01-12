@@ -7,7 +7,7 @@ class Migration_Initial_tables extends Migration {
         // Create the tests table first.
         // Note that we're referencing bf_users - if another prefix is used, this will fail
         $this->db->query('
-CREATE TABLE `tests` (
+CREATE TABLE `bf_tests` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
  `description` text NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE `tests` (
         
         // Next, do the questions since that depends on the tests
         $this->db->query('
-CREATE TABLE `questions` (
+CREATE TABLE `bf_questions` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `parent_test` int(11) NOT NULL,
  `question` text NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE `questions` (
         
         // Finally, the answers, since it depends on the questions
         $this->db->query('
-CREATE TABLE `answers` (
+CREATE TABLE `bf_answers` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `answer` text NOT NULL,
  `correct` tinyint(1) NOT NULL,
