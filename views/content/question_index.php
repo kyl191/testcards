@@ -36,7 +36,7 @@
                 <td colspan="3">
                     <br/>
                     <div class="alert alert-warning">
-                        No Posts found.
+                        No questions found.
                     </div>
                 </td>
             </tr>
