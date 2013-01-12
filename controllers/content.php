@@ -149,6 +149,12 @@
             $this->db->set("numQuestions", $num_questions);
             $this->db->where("id", $test)->update("bf_tests");
             
+            // loop over the answers and add them, singling out the correct one to set the correct variable
+            for($i = 1; $i <= 3; $i++){
+                $data = array(
+                    'answer' => 
+            }
+            
             return $return;
         }
         
