@@ -27,11 +27,11 @@
             {
                 if ($this->save_post())
                 {
-                    Template::set_message('You post was successfully saved.', 'success');
-                    redirect(SITE_AREA .'/content/blog');
+                    Template::set_message('The quiz was successfully saved.', 'success');
+                    redirect(SITE_AREA .'/content/cards');
                 }
             }
-            Template::set('toolbar_title', 'Create New Post');
+            Template::set('toolbar_title', 'Create New Quiz');
             Template::set_view('content/post_form');
             Template::render();
         }

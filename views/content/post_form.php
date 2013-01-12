@@ -12,19 +12,19 @@
     </div>
     
     <div class="control-group <?php if (form_error('slug')) echo 'error'; ?>">
-        <label for="slug">Slug</label>
+        <label for="slug">Short code</label>
         <div class="controls">
             <div class="input-prepend">
                 <span class="add-on"><?php echo site_url() .'cards/' ?></span>
                 <input type="text" name="slug" class="input-xlarge" value="<?php echo set_value('slug', isset($post) ? $post->slug : ''); ?>" />
             </div>
             <?php if (form_error('slug')) echo '<span class="help-inline">'. form_error('slug') .'</span>'; ?>
-            <p class="help-block">The unique URL that this post can be viewed at.</p>
+            <p class="help-block">The unique URL that this test will be available at.</p>
         </div>
     </div>
     
     <div class="control-group <?php if (form_error('body')) echo 'error'; ?>">
-        <label for="body">Content</label>
+        <label for="body">Description</label>
         <div class="controls">
             <?php if (form_error('body')) echo '<span class="help-inline">'. form_error('body') .'</span>'; ?>
             <textarea name="body" class="input-xxlarge" rows="15"><?php echo set_value('body', isset($post) ? $post->body : '') ?></textarea>
@@ -32,7 +32,7 @@
     </div>
     
     <div class="form-actions">
-        <input type="submit" name="submit" class="btn btn-primary" value="Save Post" />
+        <input type="submit" name="submit" class="btn btn-primary" value="Save Quiz" />
         or <a href="<?php echo site_url(SITE_AREA .'/content/cards') ?>">Cancel</a>
     </div>
     
