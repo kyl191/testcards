@@ -47,7 +47,6 @@
             }
             
             
-            
             // Compile our post data to make sure nothing
             // else gets through.
             $data = array(
@@ -68,7 +67,7 @@
             }
             
             return $return;
-}
+        }
 
 //--------------------------------------------------------------------
         public function edit_test($id=null) 
