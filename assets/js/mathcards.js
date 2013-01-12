@@ -2,8 +2,9 @@ function validate(attempt){
     if (answer == attempt){
         correct++;
     }
+    questionsLeft--;
     $('input[type=radio]').prop('disabled', true);
-    if (correct >= 10){
+    if (correct >= 10  || questionsLeft <= 0){
         $("#endbutton").show();
         $("#nextbutton").hide();
     } else {
@@ -31,7 +32,7 @@ function nextQuestion(data){
 }
 
 function showSummary(){
-    $("#restartbutton").before("<h2 id=\"message\">Congrats!</h2> <p>You finished 10 questions, and got " + correct + " of them correct!</p><p>If you want to be able to test yourself against all of the questions at one go, please purchase the full version of this application. Thanks!</p><p>Alternatively, tap the restart button below to try another 10 randomly selected questions.</p>").fadeIn("fast");
+    $("#restartbutton").before("<h2 id=\"message\">Congrats!</h2> <p>You got " + correct + " questions correct!</p>").fadeIn("fast");
     $("#mainleft").fadeOut("fast");
     $("#mainright").fadeOut("fast");
     $("#restartbutton").show();
@@ -52,6 +53,7 @@ function init(){
         $("#main > p").remove();
         correct = 0;
         numQuestions = data.length;
+        questionsLeft = data.length - 1;
 
         // Hide all the buttons
         $('#nextbutton').hide();
@@ -100,6 +102,7 @@ function getData(callback){
         });
 }
 
-var answer, reason, correct, numQuestions;
+var answer, reason, correct, numQuestions, questionsLeft;
 correct = 0;
 numQuestions = 0;
+questionsLeft = 0;
