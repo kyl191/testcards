@@ -27,7 +27,7 @@ CREATE TABLE `bf_questions` (
  `modified` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
  PRIMARY KEY (`id`),
  KEY `parent_test` (`parent_test`),
- CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`parent_test`) REFERENCES `tests` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+ CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`parent_test`) REFERENCES `bf_tests` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;');
         
         // Finally, the answers, since it depends on the questions
@@ -40,7 +40,7 @@ CREATE TABLE `bf_answers` (
  `modified` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
  PRIMARY KEY (`id`),
  KEY `parent_question` (`parent_question`),
- CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`parent_question`) REFERENCES `questions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+ CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`parent_question`) REFERENCES `bf_questions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;');
     }
     
