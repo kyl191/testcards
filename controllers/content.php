@@ -82,9 +82,9 @@
                 }
             }
             
-            Template::set('post', $this->post_model->find($id));
+            Template::set('post', $this->test_model->find($id));
 
-            Template::set('toolbar_title', 'Edit Post');
+            Template::set('toolbar_title', 'Edit Quiz');
             Template::set_view('content/post_form');
             Template::render();
         }
