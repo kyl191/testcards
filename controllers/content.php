@@ -88,7 +88,7 @@
             Template::render();
         }
     
-        public function addQuestion() 
+        public function add_question() 
         {
             if ($this->input->post('submit'))
             {
@@ -103,7 +103,7 @@
             Template::render();
         }
         
-        private function save_Question($type='insert', $id=null) 
+        private function save_question($type='insert', $id=null) 
         {
             $this->form_validation->set_rules('question', 'Question Text', 'required');
             $this->form_validation->set_rules('answer1', 'Answer 1', 'required');
@@ -139,7 +139,7 @@
             return $return;
         }
         
-        public function edit_question($id=null) 
+        public function edit_questions($id=null) 
         {
             if ($this->input->post('submit'))
             {
