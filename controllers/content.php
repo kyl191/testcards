@@ -39,7 +39,6 @@
         private function save_post($type='insert', $id=null) 
         {
             $this->form_validation->set_rules('title', 'Title', 'required|trim');
-            $this->form_validation->set_rules('slug', 'Slug', 'trim');
             $this->form_validation->set_rules('description', 'Description', 'required|trim|strip_tags');
             
             if ($this->form_validation->run() === false)
@@ -47,11 +46,12 @@
                 return false;
             }
             
+            
+            
             // Compile our post data to make sure nothing
             // else gets through.
             $data = array(
                 'title' => $this->input->post('title'),
-                'slug'  => $this->input->post('slug'),
                 'description'  => $this->input->post('description'),
                 'owner' => $this->auth->user_id()
             );
