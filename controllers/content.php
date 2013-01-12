@@ -100,6 +100,13 @@
                     redirect(SITE_AREA .'/content/cards');
                 }
             }
+            
+            $test_list = $this->db->query('SELECT id, title from bf_tests WHERE owner = '.$this->auth->user_id())->result_array();
+            $tests = array('0' => "Select a quiz");
+            foreach($test_list as $test){
+                $tests['\''.$test['id'].'\''] = $test['title'];
+            }
+            Template::set('tests', $tests);
             Template::set('toolbar_title', 'Add New Question');
             Template::set_view('content/question_form');
             Template::render();
@@ -112,6 +119,7 @@
             $this->form_validation->set_rules('answer2', 'Answer 2', 'required');
             $this->form_validation->set_rules('answer3', 'Answer 3', 'required');
             $this->form_validation->set_rules('answer', 'Correct answer', 'required');
+            $this->form_validation->set_rules('test', 'Selected test', 'check_owner');
             
             if ($this->form_validation->run() === false)
             {
@@ -138,6 +146,16 @@
             }
             
             return $return;
+        }
+        
+        public function check_owner($test){
+            // Check that the test we're adding a question to is owned by the user
+            $userid = $this->db->select("owner")->get("bf_tests")->where("id", $test)->limit(1)->row();
+            if ($userid->owner == $this->auth->user_id()){
+                return true;
+            } else {
+                return false;
+            }
         }
         
         public function edit_question($id=null) 

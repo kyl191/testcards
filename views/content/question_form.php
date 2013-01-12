@@ -3,6 +3,13 @@
     
     <?php echo form_open(current_url(), 'class="form-horizontal"'); ?>
     
+    <div class="control-group <?php if (form_error('test')) echo 'error'; ?>">
+        <div class="controls">
+            <?php if (form_error('test')) echo '<span class="help-inline">'. form_error('test') , please choose a different test.'</span>'; ?>
+            Add a question to quiz: <?php echo form_dropdown('test', $tests, 0); ?>
+        </div>
+    </div>
+    
     <div class="control-group <?php if (form_error('question')) echo 'error'; ?>">
         <label for="question">Question Text</label>
         <div class="controls">
