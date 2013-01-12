@@ -101,7 +101,7 @@
                 }
             }
             Template::set('toolbar_title', 'Add New Question');
-            Template::set_view('content/post_form');
+            Template::set_view('content/question_form');
             Template::render();
         }
         
