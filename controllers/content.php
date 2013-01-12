@@ -50,9 +50,10 @@
             // Compile our post data to make sure nothing
             // else gets through.
             $data = array(
-                'title' => $this->input->post('title'),
+                'name' => $this->input->post('title'),
                 'slug'  => $this->input->post('slug'),
-                'body'  => $this->input->post('body')
+                'description'  => $this->input->post('body'),
+                'owner' => $this->auth->user_id()
             );
             
             if ($type == 'insert')
