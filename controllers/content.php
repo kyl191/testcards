@@ -104,7 +104,7 @@
             $test_list = $this->db->query('SELECT id, title from bf_tests WHERE owner = '.$this->auth->user_id())->result_array();
             $tests = array('0' => "Select a quiz");
             foreach($test_list as $test){
-                $tests['\''.$test['id'].'\''] = $test['title'];
+                $tests[$test['id']] = $test['title'];
             }
             Template::set('tests', $tests);
             Template::set('toolbar_title', 'Add New Question');
