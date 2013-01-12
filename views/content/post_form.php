@@ -23,11 +23,11 @@
         </div>
     </div>
     
-    <div class="control-group <?php if (form_error('body')) echo 'error'; ?>">
-        <label for="body">Description</label>
+    <div class="control-group <?php if (form_error('description')) echo 'error'; ?>">
+        <label for="description">Description</label>
         <div class="controls">
-            <?php if (form_error('body')) echo '<span class="help-inline">'. form_error('body') .'</span>'; ?>
-            <input type="text" name="description" class="input-xxlarge" value="<?php echo set_value('title', isset($post) ? $post->description : ''); ?>" />
+            <?php if (form_error('description')) echo '<span class="help-inline">'. form_error('description') .'</span>'; ?>
+            <input type="text" name="description" class="input-xxlarge" value="<?php echo set_value('description', isset($post) ? $post->description : ''); ?>" />
         </div>
     </div>
     

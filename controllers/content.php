@@ -40,7 +40,7 @@
         {
             $this->form_validation->set_rules('title', 'Title', 'required|trim');
             $this->form_validation->set_rules('slug', 'Slug', 'trim');
-            $this->form_validation->set_rules('body', 'Body', 'required|trim|strip_tags');
+            $this->form_validation->set_rules('description', 'Description', 'required|trim|strip_tags');
             
             if ($this->form_validation->run() === false)
             {
@@ -52,7 +52,7 @@
             $data = array(
                 'name' => $this->input->post('title'),
                 'slug'  => $this->input->post('slug'),
-                'description'  => $this->input->post('body'),
+                'description'  => $this->input->post('description'),
                 'owner' => $this->auth->user_id()
             );
             
