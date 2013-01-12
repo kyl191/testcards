@@ -129,19 +129,18 @@
             // Compile our post data to make sure nothing
             // else gets through.
             $data = array(
-                'title' => $this->input->post('title'),
-                'description'  => $this->input->post('description'),
-                'owner' => $this->auth->user_id()
+                'parent_test' => $this->input->post('test'),
+                'question'  => $this->input->post('question')
             );
             
+            // Add the question
             if ($type == 'insert')
             {
-                $data['numQuestions'] = 0;
-                $return = $this->test_model->insert($data);
+                $return = $this->question_model->insert($data);
+                $id = $return;
             }
             else    // Update
             {
-                $data['numQuestions'] = $this->question_model->where('parent_test', $id);
                 $return = $this->test_model->update($id, $data);
             }
             
