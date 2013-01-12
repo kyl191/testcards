@@ -1,25 +1,42 @@
 function validate(attempt){
+    cleanAnswers();
     if (answer == attempt){
+        $('input[type=radio]:checked').next().addClass("success");
+        $('input[type=radio]').prop('disabled', true);
+        //console.log("Toggling button on");
+        if (question.length == 0){
+            $("#endbutton").show();
+        } else {
+            $('#nextbutton').show();
+        }
         correct++;
-    }
-    questionsLeft--;
-    $('input[type=radio]').prop('disabled', true);
-    if (correct >= 10  || questionsLeft <= 0){
-        $("#endbutton").show();
-        $("#nextbutton").hide();
     } else {
-        $('#nextbutton').show();
+        $('input[type=radio]:checked').next().addClass("fail");
     }
+    if (reason != null){
+        $('input[type=radio]:checked').next().append("<p id=\"reason\">" + reason +"</>");
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub, "reason"]);
+    }
+}
+
+function cleanAnswers(){
+    $('input[type=radio]').next().removeClass("success");
+    $('input[type=radio]').next().removeClass("fail");
+    $("#reason").remove();
 }
 
 function clearAnswers(){
     $('input[type=radio]').prop('disabled', false);
     $('input[type=radio]:checked').prop('checked', false);
+    $("#nextbutton").hide();
 }
 
 function nextQuestion(data){
     clearAnswers();
+    cleanAnswers();
     nextQn = data.pop();
+    // horrid hack
+    if (!nextQn) showSummary();
     $("#question").fadeIn('fast').html(nextQn.question);
     $("#label1").fadeIn('fast').html(nextQn.label1);
     $("#label2").fadeIn('fast').html(nextQn.label2);
@@ -32,7 +49,7 @@ function nextQuestion(data){
 }
 
 function showSummary(){
-    $("#restartbutton").before("<h2 id=\"message\">Congrats!</h2> <p>You got " + correct + " questions correct!</p>").fadeIn("fast");
+    $("#restartbutton").before("<h2 id=\"message\">Congrats!</h2> <p>You got all of the questions correct, you smart person you!</p>").fadeIn("fast");
     $("#mainleft").fadeOut("fast");
     $("#mainright").fadeOut("fast");
     $("#restartbutton").show();
