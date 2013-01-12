@@ -10,13 +10,13 @@
             <tr>
                 <th class="column-check"><input class="check-all" type="checkbox" /></th>
                 <th>Title</th>
-                <th style="width: 10em">Username</th>
+                <th style="width: 10em">Owner</th>
                 <th style="width: 3em">Questions</th>
             </tr>
         </thead>
         <tfoot>
             <tr>
-                <td colspan="3">
+                <td colspan="4">
                     With selected: 
                     <input type="submit" name="submit" class="btn" value="Delete"> 
                 </td>
@@ -41,7 +41,7 @@
             <?php endforeach; ?>
         <?php else: ?>
             <tr>
-                <td colspan="3">
+                <td colspan="4">
                     <br/>
                     <div class="alert alert-warning">
                         No Posts found.
