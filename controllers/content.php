@@ -185,4 +185,102 @@
             Template::set_view('content/question_index');
             Template::render();
         }
+        
+        public function add_answer() 
+        {
+            if ($this->input->post('submit'))
+            {
+                if ($this->save_question())
+                {
+                    Template::set_message('The answer was successfully saved.', 'success');
+                    redirect(SITE_AREA .'/content/cards/list_answers');
+                }
+            }
+            
+            $question_list = $this->db->query('SELECT bf_questions.id, bf_questions.question FROM bf_questions JOIN bf_tests ON bf_questions.parent_test = bf_tests.id WHERE bf_tests.owner = '.$this->auth->user_id())->result_array();
+            $questions = array('0' => "Select a question");
+            foreach($question_list as $question){
+                $questions[$question['id']] = $question['title'];
+            }
+            Template::set('questions', $questions);
+            Template::set('toolbar_title', 'Add New Answer');
+            Template::set_view('content/answer_form');
+            Template::render();
+        }
+        
+        private function save_answer($type='insert', $id=null) 
+        {
+            $this->form_validation->set_rules('answer', 'Answer Text', 'required');
+            $this->form_validation->set_rules('question', 'Selected question', 'check_owner');
+            
+            if ($this->form_validation->run() === false)
+            {
+                return false;
+            }
+            
+            // Compile our post data to make sure nothing
+            // else gets through.
+            $data = array(
+                'parent_question' => $this->input->post('question'),
+                'answer'  => $this->input->post('answer'),
+                'correct' => $this->input->post('correct')
+            );
+            
+            // Add the question
+            if ($type == 'insert')
+            {
+                $return = $this->answer_model->insert($data);
+                $id = $return;
+            }
+            else    // Update
+            {
+                $return = $this->answer_model->update($id, $data);
+            }
+            // Recount the number of questions assigned to a test & update the count in the database
+            
+            $num_questions = $this->db->from("bf_questions")->where("parent_test", $test)->count_all_results();
+            $this->db->set("numQuestions", $num_questions);
+            $this->db->where("id", $test)->update("bf_tests");
+            
+            return $return;
+        }
+        
+        public function check_question_owner($test){
+            // Check that the test we're adding a question to is owned by the user
+            $userid = $this->db->select("owner")->get("bf_tests")->where("id", $test)->limit(1)->row();
+            if ($userid->owner == $this->auth->user_id()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
+        public function edit_answer($id=null) 
+        {
+            if ($this->input->post('submit'))
+            {
+                if ($this->save_post('update', $id))
+                {
+                    Template::set_message('The answer was successfully updated.', 'success');
+                    redirect(SITE_AREA .'/content/list_answers');
+                }
+            }
+            
+            Template::set('answer', $this->answer_model->find($id));
+            Template::set('tests', $this->test_model->find_all_by('owner', $this->auth->user_id()));
+
+            Template::set('toolbar_title', 'Edit Answer');
+            Template::set_view('content/answer_form');
+            Template::render();
+        }
+        
+        public function list_answers() 
+        {
+            $questions = $this->db->query('SELECT bf_answers.id, bf_answers.answer, bf_answers.modified, bf_questions.question FROM bf_answers JOIN bf_questions on bf_answers.parent_question = bf_questions.id')->result_array();
+            Template::set('answers', $answers);
+            
+            Template::set_view('content/question_index');
+            Template::render();
+        }
+
     }
