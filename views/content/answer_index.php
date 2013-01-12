@@ -28,7 +28,7 @@
                         <?php e($answer['answer']); ?>
                     </a>
                 </td>
-                <td><?php echo e($answer['title']); ?></td>
+                <td><?php echo e($answer['question']); ?></td>
             </tr>
             <?php endforeach; ?>
         <?php else: ?>

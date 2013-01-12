@@ -200,7 +200,7 @@
             $question_list = $this->db->query('SELECT bf_questions.id, bf_questions.question FROM bf_questions JOIN bf_tests ON bf_questions.parent_test = bf_tests.id WHERE bf_tests.owner = '.$this->auth->user_id())->result_array();
             $questions = array('0' => "Select a question");
             foreach($question_list as $question){
-                $questions[$question['id']] = $question['title'];
+                $questions[$question['id']] = $question['question'];
             }
             Template::set('questions', $questions);
             Template::set('toolbar_title', 'Add New Answer');
