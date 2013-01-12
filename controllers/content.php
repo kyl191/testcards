@@ -162,7 +162,7 @@
         {
             if ($this->input->post('submit'))
             {
-                if ($this->save_post('update', $id))
+                if ($this->save_question('update', $id))
                 {
                     Template::set_message('The question was successfully updated.', 'success');
                     redirect(SITE_AREA .'/content/list_questions');
@@ -190,7 +190,7 @@
         {
             if ($this->input->post('submit'))
             {
-                if ($this->save_question())
+                if ($this->save_answer())
                 {
                     Template::set_message('The answer was successfully saved.', 'success');
                     redirect(SITE_AREA .'/content/cards/list_answers');
@@ -259,7 +259,7 @@
         {
             if ($this->input->post('submit'))
             {
-                if ($this->save_post('update', $id))
+                if ($this->save_answer('update', $id))
                 {
                     Template::set_message('The answer was successfully updated.', 'success');
                     redirect(SITE_AREA .'/content/list_answers');
