@@ -1,8 +1,5 @@
-<h1>Blog Index</h1>
-<p>This is the cards index page</p>
+<h1>Quiz Index</h1>
 <div class="admin-box">
-    <h3>Blog Posts</h3>
-
     <?php echo form_open(); ?>
 
     <table class="table table-striped">
