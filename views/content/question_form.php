@@ -11,29 +11,15 @@
         </div>
     </div>
     
-    <div class="control-group <?php if (form_error('answer1')) echo 'error'; ?>">
-        <label for="answer1">Answer 1</label>
+    <?php for($i = 1; $i<=3; $i++){ ?>
+    <div class="control-group <?php if (form_error('answer'.$i)) echo 'error'; ?>">
+        <label for="answer<?php echo $i; ?>">Answer <?php echo $i; ?></label>
         <div class="controls">
-            <?php if (form_error('answer1')) echo '<span class="help-inline">'. form_error('answer1') .'</span>'; ?>
-            <textarea name="answer1" class="input-xxlarge" rows="15"><?php echo set_value('answer1', isset($answer) ? $answer->answer1 : '') ?></textarea>
+            <?php if (form_error('answer'.$i)) echo '<span class="help-inline">'. form_error('answer'.$1) .'</span>'; ?>
+            <textarea name="answer<?php echo $i; ?>" class="input-xxlarge" rows="15"><?php echo set_value('answer'.$i, isset($answers) ? $answers[$i-1]['answer'] : '') ?></textarea>
         </div>
     </div>
-        
-    <div class="control-group <?php if (form_error('answer2')) echo 'error'; ?>">
-        <label for="answer2">Answer 2</label>
-        <div class="controls">
-            <?php if (form_error('answer2')) echo '<span class="help-inline">'. form_error('answer2') .'</span>'; ?>
-            <textarea name="answer2" class="input-xxlarge" rows="15"><?php echo set_value('answer2', isset($answer) ? $answer->answer2 : '') ?></textarea>
-        </div>
-    </div>
-        
-    <div class="control-group <?php if (form_error('answer3')) echo 'error'; ?>">
-        <label for="answer3">Answer 3</label>
-        <div class="controls">
-            <?php if (form_error('answer3')) echo '<span class="help-inline">'. form_error('answer3') .'</span>'; ?>
-            <textarea name="answer3" class="input-xxlarge" rows="15"><?php echo set_value('answer3', isset($answer) ? $answer->answer3 : '') ?></textarea>
-        </div>
-    </div>
+    <?php } ?>
     
     <div class="form-actions">
         <input type="submit" name="submit" class="btn btn-primary" value="Save Question" />
