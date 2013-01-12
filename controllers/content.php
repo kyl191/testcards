@@ -211,7 +211,7 @@
         private function save_answer($type='insert', $id=null) 
         {
             $this->form_validation->set_rules('answer', 'Answer Text', 'required');
-            $this->form_validation->set_rules('question', 'Selected question', 'check_owner');
+            $this->form_validation->set_rules('question', 'Selected question', 'check_question_owner');
             
             if ($this->form_validation->run() === false)
             {
