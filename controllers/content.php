@@ -143,6 +143,11 @@
             {
                 $return = $this->test_model->update($id, $data);
             }
+            // Recount the number of questions assigned to a test & update the count in the database
+            
+            $num_questions = $this->db->from("bf_questions")->where("parent_test", $test)->count_all_results();
+            $this->db->set("numQuestions", $num_questions);
+            $this->db->where("id", $test)->update("bf_tests");
             
             return $return;
         }
