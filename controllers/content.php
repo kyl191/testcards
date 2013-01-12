@@ -87,4 +87,75 @@
             Template::set_view('content/post_form');
             Template::render();
         }
+    
+        public function addQuestion() 
+        {
+            if ($this->input->post('submit'))
+            {
+                if ($this->save_question())
+                {
+                    Template::set_message('The question was successfully saved.', 'success');
+                    redirect(SITE_AREA .'/content/cards');
+                }
+            }
+            Template::set('toolbar_title', 'Add New Question');
+            Template::set_view('content/post_form');
+            Template::render();
+        }
+        
+        private function save_Question($type='insert', $id=null) 
+        {
+            $this->form_validation->set_rules('question', 'Question Text', 'required');
+            $this->form_validation->set_rules('answer1', 'Answer 1', 'required');
+            $this->form_validation->set_rules('answer2', 'Answer 2', 'required');
+            $this->form_validation->set_rules('answer3', 'Answer 3', 'required');
+            
+            
+            
+            if ($this->form_validation->run() === false)
+            {
+                return false;
+            }
+            
+            // Compile our post data to make sure nothing
+            // else gets through.
+            $data = array(
+                'title' => $this->input->post('title'),
+                'description'  => $this->input->post('description'),
+                'owner' => $this->auth->user_id()
+            );
+            
+            if ($type == 'insert')
+            {
+                $data['numQuestions'] = 0;
+                $return = $this->test_model->insert($data);
+            }
+            else    // Update
+            {
+                $data['numQuestions'] = $this->question_model->where('parent_test', $id);
+                $return = $this->test_model->update($id, $data);
+            }
+            
+            return $return;
+        }
+        
+        public function edit_question($id=null) 
+        {
+            if ($this->input->post('submit'))
+            {
+                if ($this->save_post('update', $id))
+                {
+                    Template::set_message('The question was successfully updated.', 'success');
+                    redirect(SITE_AREA .'/content/cards');
+                }
+            }
+            
+            Template::set('question', $this->question_model->find($id));
+            Template::set('answers', $this->answer_model->find_all_by('parent_question', $id));
+            Template::set('tests', $this->test_model->find_all_by('owner', $this->auth->user_id()));
+
+            Template::set('toolbar_title', 'Edit Question');
+            Template::set_view('content/question_form');
+            Template::render();
+        }
     }
