@@ -15,7 +15,7 @@
     <div class="control-group <?php if (form_error('answer'.$i)) echo 'error'; ?>">
         <label for="answer<?php echo $i; ?>">Answer <?php echo $i; ?></label>
         <div class="controls">
-            <?php if (form_error('answer'.$i)) echo '<span class="help-inline">'. form_error('answer'.$1) .'</span>'; ?>
+            <?php if (form_error('answer'.$i)) echo '<span class="help-inline">'. form_error('answer'.$i) .'</span>'; ?>
             <textarea name="answer<?php echo $i; ?>" class="input-xxlarge" rows="15"><?php echo set_value('answer'.$i, isset($answers) ? $answers[$i-1]['answer'] : '') ?></textarea>
         </div>
     </div>
