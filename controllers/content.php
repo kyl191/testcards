@@ -69,7 +69,7 @@
 }
 
 //--------------------------------------------------------------------
-        public function edit_post($id=null) 
+        public function edit_test($id=null) 
         {
             if ($this->input->post('submit'))
             {
