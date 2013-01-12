@@ -5,7 +5,7 @@
     
     <div class="control-group <?php if (form_error('test')) echo 'error'; ?>">
         <div class="controls">
-            <?php if (form_error('test')) echo '<span class="help-inline">'. form_error('test') , please choose a different test.'</span>'; ?>
+            <?php if (form_error('test')) echo '<span class="help-inline">'. form_error('test') . 'please choose a different test.</span>'; ?>
             Add a question to quiz: <?php echo form_dropdown('test', $tests, 0); ?>
         </div>
     </div>
