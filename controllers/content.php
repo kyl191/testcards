@@ -179,9 +179,9 @@
         
         public function list_questions() 
         {
-            Template::set('questions', $this->question_model->order_by('id', 'asc')->find_all());
-            //$this->db->query('SELECT bf_tests.title, bf_tests.id, bf_tests.numQuestions, bf_users.username FROM bf_tests JOIN bf_users on bf_tests.owner = bf_users.id')->result_array();
-    
+            $questions = $this->db->query('SELECT bf_questions.id, bf_questions.question, bf_questions.modified, bf_tests.title FROM bf_questions JOIN bf_tests on bf_questions.parent_test = bf_tests.id')->result_array();
+            Template::set('questions', $questions);
+            
             Template::set_view('content/question_index');
             Template::render();
         }

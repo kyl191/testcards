@@ -1,7 +1,7 @@
 <h1>Question Index</h1>
 <div class="admin-box">
     <?php echo form_open(); ?>
-
+    
     <table class="table table-striped">
         <thead>
             <tr>
@@ -28,7 +28,7 @@
                         <?php e($question['question']); ?>
                     </a>
                 </td>
-                <td>Bleh</td>
+                <td><?php echo e($question['title']); ?></td>
             </tr>
             <?php endforeach; ?>
         <?php else: ?>
