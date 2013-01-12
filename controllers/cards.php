@@ -36,6 +36,7 @@ class Cards extends Front_Controller {
             init();
         });", "inline");
         Template::set('js', Assets::module_js());
+        Template::set('id', $id);
         Template::render();
     }
     
