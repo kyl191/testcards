@@ -16,6 +16,8 @@
             parent::__construct();
             
             $this->load->model('test_model');
+            $this->load->model('question_model');
+            $this->load->model('answer_model');
             
             Template::set('toolbar_title', 'Manage All Tests');
             Template::set_block('sub_nav', 'content/sub_nav');
