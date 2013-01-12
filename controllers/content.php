@@ -58,11 +58,11 @@
             
             if ($type == 'insert')
             {
-                $return = $this->post_model->insert($data);
+                $return = $this->test_model->insert($data);
             }
             else    // Update
             {
-                $return = $this->post_model->update($id, $data);
+                $return = $this->test_model->update($id, $data);
             }
             
             return $return;
