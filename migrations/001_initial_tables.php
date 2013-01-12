@@ -11,7 +11,7 @@ CREATE TABLE `bf_tests` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
  `description` text NOT NULL,
- `owner` int(11) NOT NULL,
+ `owner` bigint(20) unsigned NOT NULL,
  `image` varchar(255) NOT NULL,
  PRIMARY KEY (`id`),
  KEY `owner` (`owner`),
