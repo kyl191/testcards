@@ -3,7 +3,7 @@
         
         public function index() 
         {
-            $posts = $this->test_model->find_all();
+            $posts = $this->db->query('SELECT bf_tests.title, bf_tests.id, bf_tests.numQuestions, bf_users.username FROM bf_tests JOIN bf_users on bf_tests.owner = bf_users.id')->result_array();
     
             Template::set('posts', $posts);
             Template::render();

@@ -26,17 +26,17 @@
         <?php if (isset($posts) && is_array($posts)) :?>
             <?php foreach ($posts as $post) : ?>
             <tr>
-                <td><input type="checkbox" name="checked[]" value="<?php echo $post->id ?>" /></td>
+                <td><input type="checkbox" name="checked[]" value="<?php echo $post['id'] ?>" /></td>
                 <td>
-                    <a href="<?php echo site_url(SITE_AREA .'/content/cards/edit_test/'. $post->id) ?>">
-                        <?php e($post->title); ?>
+                    <a href="<?php echo site_url(SITE_AREA .'/content/cards/edit_test/'. $post['id']) ?>">
+                        <?php e($post['title']); ?>
                     </a>
                 </td>
                 <td>
-                    <?php echo date('M j, Y g:ia'); ?>
+                    <?php echo $post['username']; ?>
                 </td>
                 <td>
-                    <?php echo $post->numQuestions; ?>
+                    <?php echo $post['numQuestions']; ?>
             </tr>
             <?php endforeach; ?>
         <?php else: ?>
