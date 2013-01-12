@@ -4,7 +4,7 @@
 	<div class="post">
 		<h2><?php e($post->title) ?></h2>
 		
-		<?php echo auto_typography($post->body) ?>
+		<?php print_r($post) ?>
 	</div>
 	<?php endforeach; ?>
 
