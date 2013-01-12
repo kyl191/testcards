@@ -19,7 +19,7 @@
             $this->load->model('question_model');
             $this->load->model('answer_model');
             
-            Template::set('toolbar_title', 'Manage All Tests');
+            Template::set('toolbar_title', 'Manage Tests');
             Template::set_block('sub_nav', 'content/sub_nav');
         }
         
