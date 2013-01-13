@@ -101,7 +101,7 @@
                 }
             }
             
-            $test_list = $this->db->query('SELECT id, title from bf_tests WHERE owner = '.$this->auth->user_id())->result_array();
+            $test_list = $this->db->query('SELECT id, title from bf_tests WHERE owner = '.$this->auth->user_id() . ' ORDER BY bf_tests.id DESC')->result_array();
             $tests = array('0' => "Select a quiz");
             foreach($test_list as $test){
                 $tests[$test['id']] = $test['title'];
@@ -179,7 +179,7 @@
         
         public function list_questions() 
         {
-            $questions = $this->db->query('SELECT bf_questions.id, bf_questions.question, bf_questions.modified, bf_tests.title FROM bf_questions JOIN bf_tests on bf_questions.parent_test = bf_tests.id')->result_array();
+            $questions = $this->db->query('SELECT bf_questions.id, bf_questions.question, bf_questions.modified, bf_tests.title FROM bf_questions JOIN bf_tests on bf_questions.parent_test = bf_tests.id ORDER BY bf_tests.id DESC')->result_array();
             Template::set('questions', $questions);
             
             Template::set_view('content/question_index');
@@ -197,7 +197,7 @@
                 }
             }
             
-            $question_list = $this->db->query('SELECT bf_questions.id, bf_questions.question FROM bf_questions JOIN bf_tests ON bf_questions.parent_test = bf_tests.id WHERE bf_tests.owner = '.$this->auth->user_id())->result_array();
+            $question_list = $this->db->query('SELECT bf_questions.id, bf_questions.question FROM bf_questions JOIN bf_tests ON bf_questions.parent_test = bf_tests.id WHERE bf_tests.owner = '.$this->auth->user_id() . ' ORDER BY bf_questions.id DESC')->result_array();
             $questions = array('0' => "Select a question");
             foreach($question_list as $question){
                 $questions[$question['id']] = $question['question'];
