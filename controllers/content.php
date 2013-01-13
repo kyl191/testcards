@@ -193,7 +193,7 @@
                 if ($this->save_answer())
                 {
                     Template::set_message('The answer was successfully saved.', 'success');
-                    redirect(SITE_AREA .'/content/cards/list_answers');
+                    //redirect(SITE_AREA .'/content/cards/list_answers');
                 }
             }
             
