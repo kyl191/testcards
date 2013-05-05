@@ -12,6 +12,7 @@ CREATE TABLE `bf_tests` (  `id` int(11) NOT NULL AUTO_INCREMENT,
 `slug` varchar(255) NOT NULL,  
 `description` text NOT NULL,  
 `owner` bigint(20) unsigned NOT NULL,  
+`numQuestions` int(11) unsigned NOT NULL,
 PRIMARY KEY (`id`),  
 UNIQUE KEY `slug` (`slug`),  
 KEY `owner` (`owner`),  CONSTRAINT `tests_ibfk_1` FOREIGN KEY (`owner`) REFERENCES `bf_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB DEFAULT CHARSET=utf8;');
