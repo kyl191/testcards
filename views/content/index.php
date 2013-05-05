@@ -15,7 +15,7 @@
             <tr>
                 <td colspan="4">
                     With selected: 
-                    <input type="submit" name="submit" class="btn" value="Delete"> 
+                    <input type="submit" name="delete" class="btn" value="Delete"> 
                 </td>
             </tr>
         </tfoot>
