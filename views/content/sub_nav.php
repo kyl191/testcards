@@ -5,16 +5,4 @@
     <li <?php echo $this->uri->segment(4) == 'create' ? 'class="active"' : '' ?>>
         <a href="<?php echo site_url(SITE_AREA .'/content/cards/create') ?>">New Quiz</a>
     </li>
-    <li <?php echo $this->uri->segment(4) == 'list_questions' ? 'class="active"' : '' ?>>
-        <a href="<?php echo site_url(SITE_AREA .'/content/cards/list_questions') ?>">List of Questions</a>
-    </li>
-    <li <?php echo $this->uri->segment(4) == 'add_question' ? 'class="active"' : '' ?>>
-        <a href="<?php echo site_url(SITE_AREA .'/content/cards/add_question') ?>">Add a Question</a>
-    </li>
-    <li <?php echo $this->uri->segment(4) == 'list_answers' ? 'class="active"' : '' ?>>
-        <a href="<?php echo site_url(SITE_AREA .'/content/cards/list_answers') ?>">List of Answers</a>
-    </li>
-    <li <?php echo $this->uri->segment(4) == 'add_answer' ? 'class="active"' : '' ?>>
-        <a href="<?php echo site_url(SITE_AREA .'/content/cards/add_answer') ?>">Add a Answer</a>
-    </li>
 </ul>
