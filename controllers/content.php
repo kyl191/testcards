@@ -1,15 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     class Content extends User_Controller {
         
-        public function index() 
-        {
-            $posts = $this->db->query('SELECT bf_tests.title, bf_tests.id, bf_tests.numQuestions, bf_users.username FROM bf_tests JOIN bf_users on bf_tests.owner = bf_users.id')->result_array();
-    
-            Template::set('posts', $posts);
-            Template::render();
-        }
-        
-        //--------------------------------------------------------------------
+
         
         public function __construct() 
         {
@@ -22,7 +14,42 @@
             Template::set('toolbar_title', 'Manage Tests');
             Template::set_block('sub_nav', 'content/sub_nav');
         }
+        public function index() 
+        {
+            // Deleting anything?
+            if ($this->input->post('delete'))
+            {
+                $checked = $this->input->post('checked');
+
+                if (is_array($checked) && count($checked))
+                {
+                    $result = FALSE;
+                    foreach ($checked as $pid)
+                    {
+                        $result = $this->test_model->delete($pid);
+                    }
+
+                    if ($result)
+                    {
+                        Template::set_message(count($checked) .' '. lang('cards_delete_success'), 'success');
+                    }
+                    else
+                    {
+                        Template::set_message(lang('cards_delete_failure') . $this->test_model->error, 'error');
+                    }
+                }
+            }
+            // This is the admin selection!
+            //$quizzes = $this->db->query('SELECT bf_tests.title, bf_tests.id, bf_tests.numQuestions, bf_users.username FROM bf_tests JOIN bf_users on bf_tests.owner = bf_users.id')->result_array();
+
+            $quizzes = $this->db->query('SELECT bf_tests.title, bf_tests.id, bf_tests.numQuestions FROM bf_tests WHERE bf_tests.owner = ' . $this->auth->user_id())->result_array();
+    
+            Template::set('quizzes', $quizzes);
+            Template::set('toolbar_title', 'Manage Quizzes');
+            Template::render();   
+        }
         
+        //--------------------------------------------------------------------        
         public function create() 
         {
             if ($this->input->post('submit'))
