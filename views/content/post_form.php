@@ -1,5 +1,5 @@
 <div class="admin-box">
-    <h3>New Quiz</h3>
+    <h3><?php echo $toolbar_title; ?></h3>
     
     <?php echo form_open(current_url(), 'class="form-horizontal"'); ?>
     
