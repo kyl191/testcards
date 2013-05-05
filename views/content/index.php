@@ -7,13 +7,12 @@
             <tr>
                 <th class="column-check"><input class="check-all" type="checkbox" /></th>
                 <th>Title</th>
-                <th style="width: 10em">Owner</th>
                 <th style="width: 3em">Questions</th>
             </tr>
         </thead>
         <tfoot>
             <tr>
-                <td colspan="4">
+                <td colspan="3">
                     With selected: 
                     <input type="submit" name="delete" class="btn" value="Delete"> 
                 </td>
@@ -28,9 +27,6 @@
                     <a href="<?php echo site_url(SITE_AREA .'/content/cards/edit_test/'. $quiz['id']) ?>">
                         <?php e($quiz['title']); ?>
                     </a>
-                </td>
-                <td>
-                    <?php echo $quiz['username']; ?>
                 </td>
                 <td>
                     <?php echo $quiz['numQuestions']; ?>
