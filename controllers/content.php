@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-    class Content extends User_Controller {
+    class Content extends Authenticated_Controller {
         
 
         
