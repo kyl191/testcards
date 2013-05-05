@@ -20,20 +20,20 @@
             </tr>
         </tfoot>
         <tbody>
-        <?php if (isset($posts) && is_array($posts) && !empty($posts)) :?>
-            <?php foreach ($posts as $post) : ?>
+        <?php if (isset($quizzes) && is_array($quizzes) && !empty($quizzes)) :?>
+            <?php foreach ($quizzes as $quiz) : ?>
             <tr>
-                <td><input type="checkbox" name="checked[]" value="<?php echo $post['id'] ?>" /></td>
+                <td><input type="checkbox" name="checked[]" value="<?php echo $quiz['id'] ?>" /></td>
                 <td>
-                    <a href="<?php echo site_url(SITE_AREA .'/content/cards/edit_test/'. $post['id']) ?>">
-                        <?php e($post['title']); ?>
+                    <a href="<?php echo site_url(SITE_AREA .'/content/cards/edit_test/'. $quiz['id']) ?>">
+                        <?php e($quiz['title']); ?>
                     </a>
                 </td>
                 <td>
-                    <?php echo $post['username']; ?>
+                    <?php echo $quiz['username']; ?>
                 </td>
                 <td>
-                    <?php echo $post['numQuestions']; ?>
+                    <?php echo $quiz['numQuestions']; ?>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -42,7 +42,7 @@
                 <td colspan="4">
                     <br/>
                     <div class="alert alert-warning">
-                        No Posts found.
+                        No quizzes found.
                     </div>
                 </td>
             </tr>
