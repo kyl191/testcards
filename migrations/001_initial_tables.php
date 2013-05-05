@@ -8,7 +8,7 @@ class Migration_Initial_tables extends Migration {
         // Note that we're referencing bf_users - if another prefix is used, this will fail
         $this->db->query('
 CREATE TABLE `bf_tests` (  `id` int(11) NOT NULL AUTO_INCREMENT,  
-`title varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,  
+`title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,  
 `slug` varchar(255) NOT NULL,  
 `description` text NOT NULL,  
 `owner` bigint(20) unsigned NOT NULL,  
